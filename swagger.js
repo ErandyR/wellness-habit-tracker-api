@@ -6,9 +6,9 @@ const doc = {
         description: 'API for managing users and wellness habits.',
         version: '1.0.0'
     },
-    host: 'localhost:3000',
+    host: process.env.RENDER_EXTERNAL_HOSTNAME || 'localhost:3000',
     basePath: '/',
-    schemes: ['http'],
+    schemes: [process.env.RENDER_EXTERNAL_HOSTNAME ? 'https' : 'http'],
     tags: [
         {
             name: 'Users',
