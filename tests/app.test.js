@@ -25,3 +25,30 @@ test('GET /habits should require authentication', async () => {
     );
 });
 
+test('GET /progress should return all progress records', async () => {
+    const response = await request(app)
+        .get('/progress')
+        .set('Authorization', `Bearer ${token}`);
+
+    expect(response.statusCode).toBe(200);
+    expect(Array.isArray(response.body)).toBe(true);
+});
+
+test('GET /journal should return all journal entries', async () => {
+    const response = await request(app)
+        .get('/journal')
+        .set('Authorization', `Bearer ${token}`);
+
+    expect(response.statusCode).toBe(200);
+    expect(Array.isArray(response.body)).toBe(true);
+});
+
+test('GET /users should return all users', async () => {
+    const response = await request(app)
+        .get('/users')
+        .set('Authorization', `Bearer ${token}`);
+
+    expect(response.statusCode).toBe(200);
+    expect(Array.isArray(response.body)).toBe(true);
+});
+
