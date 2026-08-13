@@ -20,7 +20,13 @@ const getDB = () => {
     return database;
 };
 
+const closeDB = async () => {
+    await client.close();
+};
+
+
 module.exports = {
     connectDB,
-    getDB
+    getDB,
+    closeDB
 };

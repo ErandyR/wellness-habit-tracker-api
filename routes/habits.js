@@ -4,10 +4,12 @@ const router = express.Router();
 
 const { createHabit, getHabits, getHabitById, updateHabit, deleteHabit } = require('../controllers/habits');
 
-router.post('/', createHabit);
-router.get('/', getHabits);
+const authMiddleware = require('../middleware/authenticate');
 
-router.get('/:id', getHabitById);
-router.put('/:id', updateHabit);
-router.delete('/:id', deleteHabit);
+router.post('/', authMiddleware, createHabit);
+router.get('/', authMiddleware, getHabits);
+
+router.get('/:id', authMiddleware, getHabitById);
+router.put('/:id', authMiddleware, updateHabit);
+router.delete('/:id', authMiddleware, deleteHabit);
 module.exports = router;

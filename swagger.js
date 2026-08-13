@@ -9,6 +9,16 @@ const doc = {
     host: process.env.RENDER_EXTERNAL_HOSTNAME || 'localhost:3000',
     basePath: '/',
     schemes: [process.env.RENDER_EXTERNAL_HOSTNAME ? 'https' : 'http'],
+
+    securityDefinitions: {
+        bearerAuth: {
+            type: 'apiKey',
+            name: 'Authorization',
+            in: 'header',
+            description: 'Enter your JWT token using the format: Bearer YOUR_TOKEN'
+        }
+    },
+
     tags: [
         {
             name: 'Users',
@@ -17,6 +27,14 @@ const doc = {
         {
             name: 'Habits',
             description: 'Habit management endpoints'
+        },
+        {
+            name: 'Progress',
+            description: 'Habit progress management endpoints'
+        },
+        {
+            name: 'Journal',
+            description: 'Wellness journal management endpoints'
         }
     ]
 };
